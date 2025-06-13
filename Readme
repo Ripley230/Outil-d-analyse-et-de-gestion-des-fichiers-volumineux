@@ -1,0 +1,57 @@
+Outil d’analyse et de gestion des fichiers volumineux
+
+1. Contexte et objectif
+Ce projet a été réalisé dans le cadre de la SAE 1.05 et vise à développer un outil permettant d’identifier, de visualiser et de gérer les fichiers volumineux présents dans un répertoire. L’objectif principal est d’offrir à l’utilisateur une solution efficace pour analyser la répartition de l’espace disque, visualiser les fichiers les plus gourmands et agir directement via une interface graphique conviviale.
+
+2. Besoin et problématiques
+L’utilisateur ne connaît pas toujours la répartition des fichiers stockés sur son disque et a besoin d’un moyen rapide pour :
+    Identifier les fichiers de grande taille dans un répertoire.
+    Visualiser leur répartition à l’aide d’un graphique interactif.
+    Supprimer de manière sécurisée les fichiers inutiles.
+
+Les principales problématiques abordées sont :
+    Comment scanner un répertoire et lister uniquement les fichiers volumineux ?
+    Comment offrir une visualisation claire et interactive des résultats ?
+    Comment permettre à l’utilisateur d’interagir avec les données et de lancer des actions (suppression, archivage, etc.) en toute sécurité ?
+
+3. Architecture et fonctionnement
+L’outil repose sur plusieurs scripts Python, chacun ayant un rôle précis :
+
+    Analyse des fichiers
+        Sélection du répertoire : L’utilisateur choisit le dossier à analyser via une boîte de dialogue.
+        Analyse : Un script parcourt l’arborescence, trie les fichiers par taille, filtre ceux dépassant un certain seuil et sauvegarde les résultats dans un fichier JSON.
+    
+    Visualisation et interface graphique
+        Interface PyQt5 : Une interface graphique propose plusieurs onglets pour naviguer entre les visualisations.
+        Graphique circulaire (camembert) : Généré à partir des données JSON, il affiche la répartition des fichiers volumineux.
+        Légendes interactives : Présentation des fichiers sous forme de liste avec cases à cocher, associées aux couleurs du graphique.
+        Boutons d’action : Permettent de générer un script de suppression pour les fichiers sélectionnés.
+
+    Intégration
+        L’ensemble des modules est intégré dans une application unique, offrant une expérience utilisateur fluide et intuitive.
+
+4. Fonctionnalités principales
+    Scan automatique d’un répertoire pour lister les fichiers volumineux.
+    Tri et filtrage selon la taille et le nombre de fichiers à afficher.
+    Visualisation graphique de la répartition des fichiers par taille.
+    Interface à onglets pour naviguer entre les différentes vues.
+    Légendes interactives pour sélectionner les fichiers à traiter.
+    Suppression sécurisée des fichiers sélectionnés via un script généré automatiquement.
+
+5. Technologies utilisées
+    Python 3 : langage principal pour le traitement et l’interface.
+    PyQt5 : création de l’interface graphique et des composants interactifs.
+    JSON : stockage des résultats d’analyse.
+    Pathlib : gestion des chemins de fichiers.
+
+6. Résultats et perspectives
+L’outil développé répond efficacement aux besoins initiaux :
+    
+    Identification et tri des fichiers volumineux.
+    Visualisation claire et intuitive via un graphique et des légendes.
+    Interaction directe avec les résultats et possibilité d’agir sur les fichiers.
+
+Des pistes d’amélioration sont envisagées, comme l’ajout de filtres interactifs, une gestion avancée des actions (archivage, suppression avec confirmation), et une meilleure ergonomie de l’interface.
+
+7. Conclusion
+Ce projet met en avant l’importance des outils d’analyse de fichiers pour la gestion de l’espace disque. Il démontre comment une approche basée sur une interface graphique peut rendre l’analyse et la gestion des fichiers volumineux accessible et efficace pour tous les utilisateurs.
